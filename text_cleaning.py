@@ -130,7 +130,7 @@ def remove_stopwords(text, language="french"):
 	'treizieme', 'trentieme', 'trentre', 'trois', 'tu', 'un', 'une', 'unieme',
 	'untel', 'vers', 'vingt', 'vingtieme', 'vos', 'votre', 'vous', 'y',
 	"toutes", "elles", "etc", "doit", "alors", "selon", "afin", "trop",
-	"https", "http", "ans"]
+	"https", "http", "ans", "etre", "celles", "leurs"]
 	stopwords += add_words
 	stopwords = [unidecode.unidecode(w) for w in stopwords]
 	return(" ".join([w for w in text.split(" ") if w not in stopwords]))
@@ -242,10 +242,10 @@ def text_cleaner(text, stemm=False):
 	text = split_punctuation(text)
 	text = remove_digits(text)
 	text = remove_short_words(text)
-	text = remove_stopwords(text, language="french")
 	#text = stemming(text)
 	text = plural_to_singular(text)
 	text = feminine_to_masculine(text)
+	text = remove_stopwords(text, language="french")
 	if stemm:
 		text = stemming(text)
 	return(text)
